@@ -59,7 +59,7 @@
 	# Remove branches that have already been merged with master
 	# a.k.a. ‘delete merged’
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-	
+
 	# Remove stale branches that are gone on remote
 	dg = "!git branch -vv | grep ': gone]'|  grep -v '\\*' | awk '{ print $1; }' | xargs -I F git branch -D \"F\""
 
@@ -85,6 +85,9 @@
 	# Compare two branches and show which commits are not in the first
 	# but in the second branch
 	compare = "!f() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative $1..$2; }; f"
+
+	# Show the user email for the current repository.
+	whoami = config user.email
 
 [apply]
 
